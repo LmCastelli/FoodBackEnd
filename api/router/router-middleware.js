@@ -6,7 +6,7 @@ const db = require('../data/db-config')
 
 const validate = (req, res, next) => {
     const food = req.body
-    if(!food.name || food.purpose || food.price || food.delivers || food.unhealthy || food.heavy) {
+    if(!food.name || !food.purpose || !food.price || !food.delivers || !food.unhealthy || !food.heavy) {
         next({status: 422, message: 'please fill in all fields beb'})
     } else {
         next()
@@ -21,7 +21,7 @@ const checkNameTaken = async (req, res, next) => {
     }
 }
 const checkIdExists = async (req, res, next) => {
-    const food = await db('food').where('food_id', req.body)
+    const [food] = await db('food').where('food_id', req.params.id)
     if(food) {
         req.food = food
         next()
