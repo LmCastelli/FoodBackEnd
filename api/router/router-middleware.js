@@ -23,6 +23,7 @@ const checkNameTaken = async (req, res, next) => {
 const checkIdExists = async (req, res, next) => {
     const food = await db('food').where('food_id', req.body)
     if(food) {
+        req.food = food
         next()
     } else {
         next({status: 404, message: 'that id cannot be found beb!'})
