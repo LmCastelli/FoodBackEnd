@@ -21,7 +21,7 @@ router.get('/all', (req, res, next) => {
         })
 })
 
-router.get('/:id', checkIdExists, (req, res, next) => {
+router.get('/:id', checkIdExists, (req, res, next) => {//eslint-disable-line
     res.status(200).json(req.food)
 })
 
