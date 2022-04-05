@@ -6,8 +6,8 @@ exports.up = async (knex) => {
       food.string('purpose', 30).notNullable()
       food.integer('price', 5).notNullable().unsigned()
       food.string('delivers', 10).notNullable()
-      food.boolean('unhealthy').notNullable()
-      food.boolean('heavy').notNullable()
+      food.string('unhealthy',10).notNullable()
+      food.string('heavy',10).notNullable()
     })
 }
 
